@@ -95,5 +95,7 @@ function running(sID,user)
 		end
 	else
 		print("Error in determining menu list. Check with your local professional")
+  end
+end
 
 
