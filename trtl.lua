@@ -2,7 +2,7 @@
 os.loadAPI(tools4fools)
 os.loadAPI(Message)
 
-Trtl = {id = os.getComputerid(),
+Trtl = {id = os.getComputerID(),
 		x = 0,
 		y = 0,
 		z = 0,
