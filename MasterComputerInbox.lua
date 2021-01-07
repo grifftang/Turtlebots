@@ -5,7 +5,7 @@ MasterComp = {}
 function MasterComp:receiveAndWrite()
 	while true
 		id, msg = rednet.receive("server")
-		filename = msg.sender .. "_to_" .. msg.receiver .. tools4fools.getTime()
+		filename = msg.sender.id .. "_to_" .. msg.receiver .. tools4fools.getTime()
 		path = "/disk/" .. msg.receiver .. "/" .. filename
 		out = fs.open(path, "w")
 		out.write(textutils.serialize())
