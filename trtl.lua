@@ -1,4 +1,5 @@
 -- suck my toes krab
+tools = os.loadAPI(tools4fools)
 
 Trtl = {id = os.getComputerid(),
 		x = 0,
@@ -6,6 +7,7 @@ Trtl = {id = os.getComputerid(),
 		z = 0,
 		fuel = 0,
 		dimension = 'earth',
+		time = tools.getTime()
 		task = nil
 	}
 
