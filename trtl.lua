@@ -26,3 +26,4 @@ function Trtl:sendMessage(recipient,text)
 	rednet.open("left")
 	msg = Message:create(sender = self, reciever = recipient, message = text)
 	rednet.send(recipient,msg)
+end
