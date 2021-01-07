@@ -1,5 +1,5 @@
 -- suck my toes krab
-tools = os.loadAPI(tools4fools)
+os.loadAPI(tools4fools)
 
 Trtl = {id = os.getComputerid(),
 		x = 0,
@@ -17,9 +17,5 @@ function Trtl:create(o)
 end
 
 function Trtl:checkTime() --Return the turtle calculated time (custom unix time from epoc of minecraft world)
-  ticksPerSecond = 20
-  hoursOfTicks = os.time() * 1000
-  daysOfTicks = os.day() * 24 * 1000
-  totalTicks = hoursOfTicks + daysOfTicks
-  return int(totalTicks/ticksPerSecond)
+  self.time = getTime()
 end
