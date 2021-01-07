@@ -16,7 +16,7 @@ function MasterComp:main()
 	rednet.open("left")
 	while running do
 		local event, key = os.pullEvent("key")
-		if key = keys.down then
+		if key == keys.down then
 		    print("wjyy did you killl meeeee")
 		    running = false
 		end
