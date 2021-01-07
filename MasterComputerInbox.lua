@@ -1,5 +1,5 @@
 --Kyle Slager
-os.loadAPI("tools4fools.lua")
+os.loadAPI("Turtlebots/tools4fools")
 MasterComp = {}
 
 function MasterComp:receiveAndWrite()
