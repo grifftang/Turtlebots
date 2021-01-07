@@ -1,4 +1,5 @@
 --Kyle Slager
+tools4fools = require("tools4fools")
 
 function MasterComp:receiveAndWrite()
 	id, msg = rednet.receive("server")

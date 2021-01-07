@@ -1,4 +1,4 @@
-os.loadAPI("Turtlebots/Message")
+Message = require("Message")
 MasterComputerOutbox = {}
 
 function MasterComputerOutbox:readAndSend()
