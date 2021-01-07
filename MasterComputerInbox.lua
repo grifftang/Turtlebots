@@ -1,6 +1,4 @@
 --Kyle Slager
-os.loadAPI("./tools4fools.lua")
-MasterComp = {}
 
 function MasterComp:receiveAndWrite()
 	id, msg = rednet.receive("server")
@@ -10,8 +8,6 @@ function MasterComp:receiveAndWrite()
 	out.write(textutils.serialize())
 	out.close()
 end
-
---my coding talent is wasted on you fucks
 
 function MasterComp:main()
 	running = true
