@@ -12,8 +12,14 @@ function MasterComp:receiveAndWrite()
 end
 
 function MasterComp:main()
+	running = true
 	rednet.open("left")
-	while true do
+	while running do
+		local event, key = os.pullEvent("key")
+		if key = keys.down then
+		    print("wjyy did you killl meeeee")
+		    running = false
+		end
 		self.receiveAndWrite()
 	end
 end
