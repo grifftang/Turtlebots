@@ -1,7 +1,9 @@
 --Kyle Slager
 tools4fools = require("tools4fools")
 
-function MasterComp:receiveAndWrite()
+MasterComputerInbox = {}
+
+function MasterComputerInbox:receiveAndWrite()
 	id, msg = rednet.receive("server")
 	filename = msg.sender.id .. "_to_" .. msg.receiver .. tools4fools.getTime()
 	path = "/disk/" .. msg.receiver .. "/" .. filename
@@ -10,7 +12,7 @@ function MasterComp:receiveAndWrite()
 	out.close()
 end
 
-function MasterComp:main()
+function MasterComputerInbox:main()
 	running = true
 	rednet.open("left")
 	while running do
