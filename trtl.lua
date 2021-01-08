@@ -1,6 +1,8 @@
 -- suck my toes krab
-os.loadAPI(tools4fools)
-os.loadAPI(Message)
+require("tools4fools")
+require("Message")
+
+DIRECTIONS = ['north','east','south','west']
 
 Trtl = {id = os.getComputerID(),
 		x = 0,
@@ -9,7 +11,9 @@ Trtl = {id = os.getComputerID(),
 		fuel = 0,
 		dimension = 'earth',
 		time = getTime(),
-		task = nil
+		task = nil,
+		direction = 0,
+		miningInfo = {}
 	}
 
 function Trtl:create(o)
@@ -27,3 +31,48 @@ function Trtl:sendMessage(recipient,text)
 	msg = Message:create(sender = self, reciever = recipient, message = text)
 	rednet.send(recipient,msg)
 end
+
+function Trtl:checkFuel()
+  local x = turtle.getFuelLevel()
+  if x == "unlimited" then
+    self.fuel = 1000000000
+  else
+    self.fuel = x
+  end
+end
+
+function Trtl:refuel()
+
+end
+
+function Trtl:turnRight()
+	self.direction = (self.direction + 1) % 4
+	turtle.turnRight()
+end
+
+function Trtl:turnRight()
+	self.direction = (self.direction - 1) % 4
+	turtle.turnRight()
+end
+
+function Trtl:sayDirection()
+	print(DIRECTIONS[self.direction])
+end
+
+function Trtl:runMiningSequence()
+
+end
+
+function Trtl:mineColumn()
+end
+
+
+
+
+
+
+
+
+
+
+
