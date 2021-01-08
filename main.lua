@@ -1,7 +1,7 @@
-require("trtl.lua")
+tPackage = require("Trtl")
 print("ready for orders baus")
 
-t = Trtl:create{}
+t = tPackage.Trtl:create{}
 t.sayDirection()
 t.turnRight()
 t.sayDirection()
