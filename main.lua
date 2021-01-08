@@ -1,4 +1,4 @@
-require("trtl")
+require("trtl.lua")
 print("ready for orders baus")
 
 t = Trtl:create{}
