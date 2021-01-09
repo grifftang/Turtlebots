@@ -3,6 +3,7 @@ require("tools4fools")
 require("Message")
 
 DIRECTIONS = {'north','east','south','west'}
+TORCH_INTERVAL = 2
 
 Trtl = {id = os.getComputerID(),
 		x = 0,
@@ -53,10 +54,6 @@ function Trtl:updateFuel()
   end
 end
 
-function Trtl:refuel()
-
-end
-
 function Trtl:turnRight()
 	self.direction = (self.direction + 1) % 5
 	if self.direction == 0 then
@@ -82,6 +79,9 @@ function Trtl:goFoward()
 		self.z = self.z - 1
 	elseif self.direction == 4 and turtle.forward() then -- West = -X
 		self.x = self.x - 1
+	else
+		turtle.dig()
+		self:goFoward()
 	end
 end
 
@@ -132,15 +132,27 @@ function Trtl:mineColumn(height)
 	end
 end
 
-function Trtl:goToFuel()
+function Trtl:moveToPoint(x,y,z)
 	
 end
+
+
+function Trtl:goToFuel()
+	self:moveToPoint(0,0,0)
+	turtle.suckDown()
+	self.refuel()
+end
+
+function Trtl:getBackToWork(x,y,z)
+	self:moveToPoint(x,y,z)
 
 function Trtl:refuel()
 	i = getItemSlot("minecraft:coal")
 	if i == false then --if search for coal comes up false
 		print("baus i have no coal i must go home now")
+		local ogX,ogY,ogZ = self.x,self.y,self.z
 		self:goToFuel()
+		self:getBackToWork(ogX,ogY,ogZ)
 	else
 		print("me see fuel")
 		turtle.select(i) --else i's the index baby
@@ -167,6 +179,29 @@ end
 
 function Trtl:checkInventoryFull()
 
+end
+
+function Trtl:layTorch()
+	i = getItemSlot("minecraft:torch")
+	if i == false then
+		print("me no havo torcho")
+	else
+		print("me havo torcho!!!")
+		turtle.select(i)
+		for i=1,2 do --flip it in reverse
+			self.turnRight()
+		end
+		turtle.place()
+		for i=1,2 do --forward again
+			self.turnRight()
+		end
+end
+
+function Trtl:checkIfTorchNeeded()
+	--if on the floor and on the grid of interval length
+	if self.x % TORCH_INTERVAL == 0 and self.z % TORCH_INTERVAL == 0 and self.y == 0 then
+		print("pop a flare at " .. self.x ..", " .. self.y .. ", ".. self.z)
+		self:layTorch()
 end
 
 function Trtl:mine(height)
