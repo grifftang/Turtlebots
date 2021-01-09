@@ -25,14 +25,14 @@ function Trtl.checkTime() --Return the turtle calculated time (custom unix time 
   self.time = getTime()
 end
 
-function Trtl.sendMessage(recipient,text)
+function Trtl.sendMessage(self,recipient,text)
 	--need to open rednet?
 	rednet.open("left")
 	msg = Message:create{sender = self, reciever = recipient, message = text}
 	rednet.send(recipient,msg)
 end
 
-function Trtl.checkFuel()
+function Trtl.checkFuel(self)
   local x = turtle.getFuelLevel()
   if x == "unlimited" then
     self.fuel = 1000000000
@@ -45,7 +45,7 @@ function Trtl.refuel()
 
 end
 
-function Trtl.turnRight()
+function Trtl.turnRight(self)
 	self.direction = (self.direction + 1) % 5
 	if self.direction == 0 then
 		self.direction = 1
@@ -53,7 +53,7 @@ function Trtl.turnRight()
 	turtle.turnRight()
 end
 
-function Trtl.turnRight()
+function Trtl.turnRight(self)
 	self.direction = (self.direction - 1) % 5
 	if self.direction == 0 then
 		self.direction = 1
@@ -61,7 +61,7 @@ function Trtl.turnRight()
 	turtle.turnRight()
 end
 
-function Trtl.sayDirection()
+function Trtl.sayDirection(self)
 	print(self.direction)
 	print(DIRECTIONS[self.direction])
 end
