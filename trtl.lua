@@ -15,11 +15,12 @@ Trtl = {id = os.getComputerID(),
 		direction = 1,
 		miningInfo = {},
 	}
+Trtl.__index = Trtl
 
 function Trtl:create(o)
 	o = o or {}
     setmetatable(o, self)
-    self.__index = self
+    --self.__index = self
 	self.id = os.getComputerID()
 	self.x = 0
 	self.y = 0
@@ -78,7 +79,7 @@ function Trtl:turnRight()
 	turtle.turnRight()
 end
 
-function Trtl:SayDirection()
+function Trtl:SayDirection ()
 	print(self.direction)
 	print(DIRECTIONS[self.direction])
 end
