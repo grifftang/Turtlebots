@@ -79,12 +79,15 @@ function Trtl:runMiningSequence(laps)
 	mineHeight = 4
 	for up=1,mineHeight+1 do
 		turtle.dig("right")
+		os.sleep(0.05)
 		print("dig")
 		turtle.up()
+		os.sleep(0.05)
 		print("up")
 	end
 	for down=1,mineHeight+1 do
 			turtle.down()
+			os.sleep(0.05)
 	end
 	-- for lap=1,laps do
 	-- 	for rad=startRadius,endRadius do
