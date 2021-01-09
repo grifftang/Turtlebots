@@ -16,23 +16,23 @@ Trtl = {id = os.getComputerID(),
 		miningInfo = {}
 	}
 
-function Trtl:create(o)
+function Trtl.create(o)
   o.parent = self
   return o
 end
 
-function Trtl:checkTime() --Return the turtle calculated time (custom unix time from epoc of minecraft world)
+function Trtl.checkTime() --Return the turtle calculated time (custom unix time from epoc of minecraft world)
   self.time = getTime()
 end
 
-function Trtl:sendMessage(recipient,text)
+function Trtl.sendMessage(recipient,text)
 	--need to open rednet?
 	rednet.open("left")
 	msg = Message:create{sender = self, reciever = recipient, message = text}
 	rednet.send(recipient,msg)
 end
 
-function Trtl:checkFuel()
+function Trtl.checkFuel()
   local x = turtle.getFuelLevel()
   if x == "unlimited" then
     self.fuel = 1000000000
@@ -41,11 +41,11 @@ function Trtl:checkFuel()
   end
 end
 
-function Trtl:refuel()
+function Trtl.refuel()
 
 end
 
-function Trtl:turnRight()
+function Trtl.turnRight()
 	self.direction = (self.direction + 1) % 5
 	if self.direction == 0 then
 		self.direction = 1
@@ -53,7 +53,7 @@ function Trtl:turnRight()
 	turtle.turnRight()
 end
 
-function Trtl:turnRight()
+function Trtl.turnRight()
 	self.direction = (self.direction - 1) % 5
 	if self.direction == 0 then
 		self.direction = 1
@@ -61,16 +61,16 @@ function Trtl:turnRight()
 	turtle.turnRight()
 end
 
-function Trtl:sayDirection()
+function Trtl.sayDirection()
 	print(self.direction)
 	print(DIRECTIONS[self.direction])
 end
 
-function Trtl:runMiningSequence()
+function Trtl.runMiningSequence()
 
 end
 
-function Trtl:mineColumn()
+function Trtl.mineColumn()
 end
 
 
