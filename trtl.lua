@@ -9,7 +9,7 @@ Trtl = {id = os.getComputerID(),
 		y = 0,
 		z = 0,
 		dimension = 'earth',
-		time = getTime(),
+		time = 0,
 		task = nil,
 		direction = 1,
 		miningInfo = {},
@@ -29,6 +29,7 @@ end
 
 function Trtl:checkTime() --Return the turtle calculated time (custom unix time from epoc of minecraft world)
   self.time = getTime()
+  return getTime()
 end
 
 function Trtl:sayTime()
