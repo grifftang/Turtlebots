@@ -36,6 +36,7 @@ end
 function getItemSlot(item)
   for i = 1, 16 do
     data = turtle.getItemDetail(i)
+    print(data.name)
     if data and data.name == item then
       return i
     end
