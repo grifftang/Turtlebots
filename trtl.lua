@@ -16,14 +16,25 @@ Trtl = {id = os.getComputerID(),
 		miningInfo = {},
 	}
 
+function Trtl:create(o)
+	o.parent = self,
+	self.id = os.getComputerID(),
+	self.x = 0,
+	self.y = 0,
+	self.z = 0,
+	self.fuel = 0,
+	self.dimension = 'earth',
+	self.time = getTime(),
+	self.task = nil,
+	self.direction = 1,
+	self.miningInfo = {}
+  return o
+end
+
 function Trtl:setID()
 	self.id = os.getComputerID()
 end
 
-function Trtl:create(o)
-  o.parent = self
-  return o
-end
 
 function Trtl:checkTime() --Return the turtle calculated time (custom unix time from epoc of minecraft world)
   self.time = getTime()
