@@ -14,22 +14,11 @@ Trtl = {id = os.getComputerID(),
 		direction = 1,
 		miningInfo = {},
 	}
---Trtl.__index = Trtl
+Trtl.__index = Trtl
 
 function Trtl:create(o)
 	o = o or {}
-    setmetatable(o, self)
-    --self.__index = self
-	self.id = os.getComputerID()
-	self.x = 0
-	self.y = 0
-	self.z = 0
-	self.fuel = 0
-	self.dimension = 'earth'
-	self.time = getTime()
-	self.task = nil
-	self.direction = 1
-	self.miningInfo = {}
+    
   return o
 end
 
