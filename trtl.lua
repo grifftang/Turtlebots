@@ -122,7 +122,7 @@ end
 
 function Trtl:runMiningSequence(length,width)
 	for i=1, length do
-		for j=1 width do
+		for j=1, width do
 			self.mine()
 		end
 	end
