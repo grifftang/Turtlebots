@@ -13,8 +13,9 @@ Trtl = {id = os.getComputerID(),
 		time = getTime(),
 		task = nil,
 		direction = 1,
-		miningInfo = {}
+		miningInfo = {},
 	}
+
 function Trtl:setID()
 	self.id = os.getComputerID()
 end
