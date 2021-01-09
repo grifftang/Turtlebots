@@ -17,16 +17,17 @@ Trtl = {id = os.getComputerID(),
 	}
 
 function Trtl:create(o)
-	o.parent = self,
-	self.id = os.getComputerID(),
-	self.x = 0,
-	self.y = 0,
-	self.z = 0,
-	self.fuel = 0,
-	self.dimension = 'earth',
-	self.time = getTime(),
-	self.task = nil,
-	self.direction = 1,
+	o = o or {}
+    setmetatable(o, self)
+	self.id = os.getComputerID()
+	self.x = 0
+	self.y = 0
+	self.z = 0
+	self.fuel = 0
+	self.dimension = 'earth'
+	self.time = getTime()
+	self.task = nil
+	self.direction = 1
 	self.miningInfo = {}
   return o
 end
