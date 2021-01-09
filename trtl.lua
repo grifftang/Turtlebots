@@ -8,7 +8,6 @@ Trtl = {id = os.getComputerID(),
 		x = 0,
 		y = 0,
 		z = 0,
-		fuel = 0,
 		dimension = 'earth',
 		time = getTime(),
 		task = nil,
@@ -79,7 +78,7 @@ function Trtl:turnRight()
 	turtle.turnRight()
 end
 
-function Trtl:SayDirection ()
+function Trtl:sayDirection ()
 	print(self.direction)
 	print(DIRECTIONS[self.direction])
 end
