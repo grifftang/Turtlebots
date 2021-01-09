@@ -79,7 +79,9 @@ function Trtl:runMiningSequence(laps)
 	mineHeight = 4
 	for up=1,mineHeight+1 do
 		turtle.dig("right")
+		print("dig")
 		turtle.up()
+		print("up")
 	end
 	for down=1,mineHeight+1 do
 			turtle.down()
