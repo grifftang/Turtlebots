@@ -72,13 +72,25 @@ function Trtl:sayDirection ()
 	print(DIRECTIONS[self.direction])
 end
 
-function Trtl:runMiningSequence()
-
+function Trtl:runMiningSequence(laps)
+	laps = laps or 5
+	startRadius = 1
+	endRadius = 4
+	mineHeight = 4
+	for up=1,mineHeight+1 do
+		turtle.dig("right")
+		turtle.up()
+		for down=1,mineHeight+1 do
+			turtle.down()
+		end
+	end
+	-- for lap=1,laps do
+	-- 	for rad=startRadius,endRadius do
+			
+	-- end
 end
 
-function Trtl:mineColumn()
-	
-end
+
 
 
 
