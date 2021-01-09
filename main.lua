@@ -7,4 +7,5 @@ t = Trtl:create{}
 -- print(t.id)
 -- t:turnRight{}
 -- t:sayDirection{}
-t:runMiningSequence(3)
+--t:runMiningSequence(3)
+t:sayTime()
