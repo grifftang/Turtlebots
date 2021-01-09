@@ -140,8 +140,10 @@ function Trtl:refuel()
 	if i == false then --if search for coal comes up false
 		self:goToFuel()
 	else
+		print("me see fuel")
 		turtle.select(i) --else i's the index baby
 		turtle.refuel()
+		print("me drink fuel ("..self.fuel..")")
 	end
 end
 
@@ -154,6 +156,7 @@ function Trtl:checkFuel()
 	x = turtle.getFuelLevel()
 	local buffer = 5
 	if x < self:distanceFromFuel() + buffer then --if we can barely make it back
+		print("miso thirtsy baus ("..self.fuel..")")
 		self:refuel()
 	end
 end
