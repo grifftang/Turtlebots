@@ -98,7 +98,9 @@ function Trtl:up()
 		self.y = self.y + 1
 	else
 		turtle.digUp()
+		os.sleep(0.05)
 		self:up()
+		os.sleep(0.05)
 	end
 
 end
@@ -108,14 +110,16 @@ function Trtl:down()
 		self.y = self.y - 1
 	else
 		turtle.digDown()
+		os.sleep(0.05)
 		self:down()
+		os.sleep(0.05)
 	end
 end
 
 
-function Trtl:mineColumn ()
-	mineHeight = 4
-	for up=1,mineHeight+1 do
+function Trtl:mineColumn(height)
+	mineHeight = height or 4
+	for up=1,mineHeight do
 		turtle.dig("right")
 		os.sleep(0.05)
 		self:up()
@@ -140,22 +144,29 @@ function Trtl:checkInventoryFull()
 
 end
 
-function Trtl:mine()
+function Trtl:mine(height)
 	self:checkFuel()
 	self:checkInventoryFull()
-	self:mineColumn()
+	self:mineColumn(height)
 	self:goFoward()
 end
 
-function Trtl:runMiningSequence(length,width)
+function Trtl:runMiningSequence(length,width,height)
 	for i=1, length do
 		for j=1, width do
 			self:mine()
 		end
-		self:turnRight()
-		self:mineColumn()
-		self:goFoward()
-		self:turnRight()
+		if self.direction == 1 then
+			self:turnRight()
+			self:mineColumn(height)
+			self:goFoward()
+			self:turnRight()
+		else
+			self:turnLeft()
+			self:mineColumn(height)
+			self:goFoward()
+			self:turnLeft()
+		end
 	end
 end
 
