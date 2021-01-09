@@ -14,7 +14,7 @@ Trtl = {id = os.getComputerID(),
 		direction = 1,
 		miningInfo = {},
 	}
-Trtl.__index = Trtl
+--Trtl.__index = Trtl
 
 function Trtl:create(o)
 	o = o or {}
