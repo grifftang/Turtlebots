@@ -9,4 +9,5 @@ t = Trtl:create{}
 -- t:sayDirection{}
 --t:runMiningSequence(3)
 --t:sayTime()
-t:runMiningSequence(2,5)
+--t:runMiningSequence(2,5,2)
+t:checkFuel()

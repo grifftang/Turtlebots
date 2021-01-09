@@ -132,11 +132,25 @@ function Trtl:mineColumn(height)
 end
 
 function Trtl:refuel()
+	i = getItemSlot("Coal")
+	if i == false then --if search for coal comes up false
+		self:goToFuel()
+	else
+		turtle.select(i) --else i's the index baby
+		turtle.refuel()
+	end
+end
 
+function Trtl:distanceFromFuel()
+	return math.abs(self.x) + math.abs(self.y) + math.abs(self.z)   
 end
 
 function Trtl:checkFuel()
-
+	x = turtle.getFuelLevel()
+	local buffer = 5
+	if x < self:distanceFromFuel() + buffer then --if we can barely make it back
+		self:refuel()
+	end
 end
 
 function Trtl:checkInventoryFull()
@@ -152,10 +166,10 @@ end
 
 function Trtl:runMiningSequence(length,width,height)
 	for i=1, length do
-		for j=1, width do
+		for j=1, width do --Go in a line
 			self:mine()
 		end
-		if self.direction == 1 then
+		if self.direction == 1 then -- Turn
 			self:turnRight()
 			self:mineColumn(height)
 			self:goFoward()
