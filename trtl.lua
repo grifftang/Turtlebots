@@ -19,6 +19,7 @@ Trtl = {id = os.getComputerID(),
 function Trtl:create(o)
 	o = o or {}
     setmetatable(o, self)
+    self.__index = self
 	self.id = os.getComputerID()
 	self.x = 0
 	self.y = 0
