@@ -28,7 +28,7 @@ end
 function Trtl:sendMessage(recipient,text)
 	--need to open rednet?
 	rednet.open("left")
-	msg = Message:create(sender = self, reciever = recipient, message = text)
+	msg = Message:create{sender = self, reciever = recipient, message = text}
 	rednet.send(recipient,msg)
 end
 
