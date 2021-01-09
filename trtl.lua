@@ -18,7 +18,9 @@ Trtl.__index = Trtl
 
 function Trtl:create(o)
 	o = o or {}
-    
+    setmetatable(o, self)
+    --self.__index = self
+	
   return o
 end
 
