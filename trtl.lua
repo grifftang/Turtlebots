@@ -2,7 +2,7 @@
 require("tools4fools")
 require("Message")
 
-DIRECTIONS = ['north','east','south','west']
+DIRECTIONS = {'north','east','south','west'}
 
 Trtl = {id = os.getComputerID(),
 		x = 0,
@@ -12,7 +12,7 @@ Trtl = {id = os.getComputerID(),
 		dimension = 'earth',
 		time = getTime(),
 		task = nil,
-		direction = 0,
+		direction = 1,
 		miningInfo = {}
 	}
 
@@ -46,12 +46,18 @@ function Trtl:refuel()
 end
 
 function Trtl:turnRight()
-	self.direction = (self.direction + 1) % 4
+	self.direction = (self.direction + 1) % 5
+	if self.direction == 0 then
+		self.direction = 1
+	end
 	turtle.turnRight()
 end
 
 function Trtl:turnRight()
-	self.direction = (self.direction - 1) % 4
+	self.direction = (self.direction - 1) % 5
+	if self.direction == 0 then
+		self.direction = 1
+	end
 	turtle.turnRight()
 end
 
