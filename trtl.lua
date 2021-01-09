@@ -33,7 +33,7 @@ function Trtl:checkTime() --Return the turtle calculated time (custom unix time 
 end
 
 function Trtl:sayTime()
-	print(self.checkTime())
+	--print(self.checkTime())
 	print(getTime())
 end
 
