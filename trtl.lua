@@ -31,6 +31,11 @@ function Trtl:checkTime() --Return the turtle calculated time (custom unix time 
   self.time = getTime()
 end
 
+function Trtl:sayTime()
+	print(self.checkTime())
+	print(getTime())
+end
+
 function Trtl:sendMessage(recipient,text)
 	--need to open rednet?
 	rednet.open("left")
