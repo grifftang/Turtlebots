@@ -131,6 +131,10 @@ function Trtl:mineColumn(height)
 	end
 end
 
+function Trtl:goToFuel()
+	
+end
+
 function Trtl:refuel()
 	i = getItemSlot("Coal")
 	if i == false then --if search for coal comes up false
@@ -144,6 +148,7 @@ end
 function Trtl:distanceFromFuel()
 	return math.abs(self.x) + math.abs(self.y) + math.abs(self.z)   
 end
+
 
 function Trtl:checkFuel()
 	x = turtle.getFuelLevel()
