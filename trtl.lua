@@ -137,7 +137,7 @@ function Trtl:goToFuel()
 end
 
 function Trtl:refuel()
-	i = getItemSlot("Minecraft:Coal")
+	i = getItemSlot("minecraft:coal")
 	if i == false then --if search for coal comes up false
 		print("baus i have no coal i must go home now")
 		self:goToFuel()
