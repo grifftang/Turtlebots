@@ -96,12 +96,19 @@ end
 function Trtl:up()
 	if turtle.up() then
 		self.y = self.y + 1
+	else
+		turtle.digUp()
+		self:up()
 	end
+
 end
 
 function Trtl:down()
 	if turtle.down() then
 		self.y = self.y - 1
+	else
+		turtle.digDown()
+		self:down()
 	end
 end
 
@@ -111,10 +118,9 @@ function Trtl:mineColumn ()
 	for up=1,mineHeight+1 do
 		turtle.dig("right")
 		os.sleep(0.05)
-		print("dig")
 		self:up()
 		os.sleep(0.05)
-		print("up")
+		self:sayCoords()
 	end
 	for down=1,mineHeight+1 do
 		self:down()
@@ -146,8 +152,11 @@ function Trtl:runMiningSequence(length,width)
 		for j=1, width do
 			self:mine()
 		end
+		self:turnRight()
+		self:mineColumn()
+		self:goFoward()
+		self:turnRight()
 	end
-	self:sayCoords()
 end
 
 
