@@ -29,12 +29,12 @@ end
 
 function Trtl:checkTime() --Return the turtle calculated time (custom unix time from epoc of minecraft world)
   self.time = getTime()
-  return getTime()
+  return self.time
 end
 
 function Trtl:sayTime()
-	self.checkTime()--print(self.checkTime())
 	print(getTime())
+	print(self:checkTime())
 end
 
 function Trtl:sendMessage(recipient,text)
