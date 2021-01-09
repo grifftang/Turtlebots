@@ -16,6 +16,8 @@ Trtl = {id = os.getComputerID(),
 		miningInfo = {}
 	}
 function Trtl:setID()
+	self.id = os.getComputerID()
+end
 
 function Trtl:create(o)
   o.parent = self
@@ -72,6 +74,7 @@ function Trtl:runMiningSequence()
 end
 
 function Trtl:mineColumn()
+
 end
 
 
