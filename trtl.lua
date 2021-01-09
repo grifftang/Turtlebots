@@ -117,7 +117,7 @@ end
 
 function Trtl:mine()
 	self.checkFuel()
-	self.
+	
 end
 
 function Trtl:runMiningSequence(length,width)
