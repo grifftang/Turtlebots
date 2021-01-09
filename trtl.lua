@@ -77,7 +77,7 @@ function Trtl:runMiningSequence()
 end
 
 function Trtl:mineColumn()
-
+	
 end
 
 

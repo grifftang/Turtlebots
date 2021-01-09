@@ -8,9 +8,11 @@ Message = { time = getTime(),
 			dimension = 'earth',
 			task = nil
 	}
+Message.__index = Mesage
 
 function Message:create(o)
-  o.parent = self
+  o = o or {}
+  setmetatable(o, self)
   return o
 end
 
