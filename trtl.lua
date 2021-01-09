@@ -81,6 +81,7 @@ function Trtl:goFoward()
 		self.z = self.z - 1
 	elseif self.direction == 4 and turtle.forward() then -- West = -X
 		self.x = self.x - 1
+	end
 end
 
 function Trtl:sayDirection ()
