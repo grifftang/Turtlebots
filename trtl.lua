@@ -15,6 +15,7 @@ Trtl = {id = os.getComputerID(),
 		direction = 1,
 		miningInfo = {}
 	}
+function Trtl:setID()
 
 function Trtl:create(o)
   o.parent = self
@@ -25,14 +26,14 @@ function Trtl:checkTime() --Return the turtle calculated time (custom unix time 
   self.time = getTime()
 end
 
-function Trtl:sendMessage(self,recipient,text)
+function Trtl:sendMessage(recipient,text)
 	--need to open rednet?
 	rednet.open("left")
 	msg = Message:create{sender = self, reciever = recipient, message = text}
 	rednet.send(recipient,msg)
 end
 
-function Trtl:checkFuel(self)
+function Trtl:checkFuel()
   local x = turtle.getFuelLevel()
   if x == "unlimited" then
     self.fuel = 1000000000
@@ -45,7 +46,7 @@ function Trtl:refuel()
 
 end
 
-function Trtl:turnRight(self)
+function Trtl:turnRight()
 	self.direction = (self.direction + 1) % 5
 	if self.direction == 0 then
 		self.direction = 1
@@ -53,7 +54,7 @@ function Trtl:turnRight(self)
 	turtle.turnRight()
 end
 
-function Trtl:turnRight(self)
+function Trtl:turnRight()
 	self.direction = (self.direction - 1) % 5
 	if self.direction == 0 then
 		self.direction = 1
@@ -61,7 +62,7 @@ function Trtl:turnRight(self)
 	turtle.turnRight()
 end
 
-function Trtl:SayDirection(self)
+function Trtl:SayDirection()
 	print(self.direction)
 	print(DIRECTIONS[self.direction])
 end
