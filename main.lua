@@ -8,4 +8,5 @@ t = Trtl:create{}
 -- t:turnRight{}
 -- t:sayDirection{}
 --t:runMiningSequence(3)
-t:sayTime()
+--t:sayTime()
+t:runMiningSequence(10,10)

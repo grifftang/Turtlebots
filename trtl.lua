@@ -33,7 +33,6 @@ function Trtl:checkTime() --Return the turtle calculated time (custom unix time 
 end
 
 function Trtl:sayTime()
-	print(getTime())
 	print(self:checkTime())
 end
 
@@ -65,7 +64,7 @@ function Trtl:turnRight()
 	turtle.turnRight()
 end
 
-function Trtl:turnRight()
+function Trtl:turnLeft()
 	self.direction = (self.direction - 1) % 5
 	if self.direction == 0 then
 		self.direction = 1
@@ -73,9 +72,24 @@ function Trtl:turnRight()
 	turtle.turnRight()
 end
 
+function Trtl:goFoward()
+	if self.direction == 1 and turtle.forward() then --North = -Z 
+		self.z = self.z - 1
+	elseif self.direction == 2 and turtle.forward() then -- East = +X
+		self.x = self.x + 1
+	elseif self.direction == 3 and turtle.forward() then -- South = +Z
+		self.z = self.z - 1
+	elseif self.direction == 4 and turtle.forward() then -- West = -X
+		self.x = self.x - 1
+end
+
 function Trtl:sayDirection ()
 	print(self.direction)
 	print(DIRECTIONS[self.direction])
+end
+
+function Trtl:sayCoords ()
+	print("x: " .. self.x .. " Y: " .. self.y .. " Z: " .. self.z)
 end
 
 function Trtl:up()
@@ -91,18 +105,18 @@ function Trtl:down()
 end
 
 
-function Trtl:digColumn ()
+function Trtl:mineColumn ()
 	mineHeight = 4
 	for up=1,mineHeight+1 do
 		turtle.dig("right")
 		os.sleep(0.05)
 		print("dig")
-		self.up()
+		self:up()
 		os.sleep(0.05)
 		print("up")
 	end
 	for down=1,mineHeight+1 do
-		self.down()
+		self:down()
 		os.sleep(0.05)
 	end
 end
@@ -115,18 +129,24 @@ function Trtl:checkFuel()
 
 end
 
+function Trtl:checkInventoryFull()
+
+end
 
 function Trtl:mine()
-	self.checkFuel()
-	
+	self:checkFuel()
+	self:checkInventoryFull()
+	self:mineColumn()
+	self:goFoward()
 end
 
 function Trtl:runMiningSequence(length,width)
 	for i=1, length do
 		for j=1, width do
-			self.mine()
+			self:mine()
 		end
 	end
+	self:sayCoords()
 end
 
 
