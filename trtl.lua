@@ -85,8 +85,7 @@ function Trtl:goFoward()
 end
 
 function Trtl:sayDirection ()
-	print(self.direction)
-	print(DIRECTIONS[self.direction])
+	print("Facing: " .. DIRECTIONS[self.direction])
 end
 
 function Trtl:sayCoords ()
