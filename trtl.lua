@@ -62,6 +62,7 @@ function Trtl:turnRight()
 end
 
 function Trtl:sayDirection()
+	print(self.direction)
 	print(DIRECTIONS[self.direction])
 end
 
