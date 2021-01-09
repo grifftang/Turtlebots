@@ -1,7 +1,7 @@
-tPackage = require("Trtl")
+require("Trtl")
 print("ready for orders baus")
 
-t = tPackage.Trtl:create{}
+t = Trtl:create{}
 t.sayDirection()
 t.turnRight()
 t.sayDirection()
