@@ -72,28 +72,57 @@ function Trtl:sayDirection ()
 	print(DIRECTIONS[self.direction])
 end
 
-function Trtl:runMiningSequence(laps)
-	laps = laps or 5
-	startRadius = 1
-	endRadius = 4
+function Trtl:up()
+	if turtle.up() then
+		self.y = self.y + 1
+	end
+end
+
+function Trtl:down()
+	if turtle.down() then
+		self.y = self.y - 1
+	end
+end
+
+
+function Trtl:digColumn ()
 	mineHeight = 4
 	for up=1,mineHeight+1 do
 		turtle.dig("right")
 		os.sleep(0.05)
 		print("dig")
-		turtle.up()
+		self.up()
 		os.sleep(0.05)
 		print("up")
 	end
 	for down=1,mineHeight+1 do
-			turtle.down()
-			os.sleep(0.05)
+		self.down()
+		os.sleep(0.05)
 	end
-	-- for lap=1,laps do
-	-- 	for rad=startRadius,endRadius do
-			
-	-- end
 end
+
+function Trtl:refuel()
+
+end
+
+function Trtl:checkFuel()
+
+end
+
+
+function Trtl:mine()
+	self.checkFuel()
+	self.
+end
+
+function Trtl:runMiningSequence(length,width)
+	for i=1, length do
+		for j=1 width do
+			self.mine()
+		end
+	end
+end
+
 
 
 --plz enjoy this code, it makes a line of trees and chops them
