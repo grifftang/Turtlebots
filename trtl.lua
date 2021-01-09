@@ -9,6 +9,7 @@ Trtl = {id = os.getComputerID(),
 		y = 0,
 		z = 0,
 		dimension = 'earth',
+		fuel = 0,
 		time = 0,
 		task = nil,
 		direction = 1,
@@ -43,7 +44,7 @@ function Trtl:sendMessage(recipient,text)
 	rednet.send(recipient,msg)
 end
 
-function Trtl:checkFuel()
+function Trtl:updateFuel()
   local x = turtle.getFuelLevel()
   if x == "unlimited" then
     self.fuel = 1000000000
@@ -143,6 +144,7 @@ function Trtl:refuel()
 		print("me see fuel")
 		turtle.select(i) --else i's the index baby
 		turtle.refuel()
+		self.fuel = turtle.getFuelLevel()
 		print("me drink fuel ("..self.fuel..")")
 	end
 end
@@ -154,6 +156,7 @@ end
 
 function Trtl:checkFuel()
 	x = turtle.getFuelLevel()
+	self.fuel = x
 	local buffer = 5
 	if x < self:distanceFromFuel() + buffer then --if we can barely make it back
 		print("miso thirtsy baus ("..self.fuel..")")
