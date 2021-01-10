@@ -132,8 +132,47 @@ function Trtl:mineColumn(height)
 	end
 end
 
-function Trtl:moveToPoint(x,y,z)
+function Trtl:turnToDirection(targDir)
+	if DIRECTIONS[self.direction] ~= targDir then
+		self:turnRight()
+		self:turnToDirection(targDir)
+	end
+	print("You wanted "..targDir.." i'm at " .. self.direction) -- this should confirm that theyre acing the right way
+end
+
+
+if self.direction == 1 and turtle.forward() then --North = -Z 
+	self.z = self.z - 1
+elseif self.direction == 2 and turtle.forward() then -- East = +X
+	self.x = self.x + 1
+elseif self.direction == 3 and turtle.forward() then -- South = +Z
+	self.z = self.z - 1
+elseif self.direction == 4 and turtle.forward() then -- West = -X
+
+
+function Trtl:moveToPoint(targx,targy,targz)
+	--find the direction to go and then go
+	--if no condition is met, we are there baby
+	--use elseif so that you solve one at a time and multiple arent triggered
+	if self.x < targx then     -- need to go East (target is +x)
+		self:turnToDirection('east')
+	elseif self.x > targx then -- need to go West (target is -x)
+		self:turnToDirection('west')
+	elseif self.z < targz then -- need to go South (target is +z)
+		self:turnToDirection('south')
+	elseif self.z > targz then -- need to go North (Target is -Z)
+		self:turnToDirection('north')
+	elseif self.y < targy then -- need to go up
+		self:up()
+	elseif self.y > targy then -- need to go down
+		self:down()
+	else
+		print("we here baby")
+		return true
+	end
 	
+	self:moveToPoint(targx,targy,targz)
+	 
 end
 
 
