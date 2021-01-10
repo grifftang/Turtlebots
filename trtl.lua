@@ -140,7 +140,7 @@ function Trtl:turnToDirection(targDir)
 		self:turnToDirection(targDir)
 		print("poop")
 	end
-	-print("You wanted "..targDir.." i'm at " .. self.direction) -- this should confirm that theyre acing the right way
+	print("You wanted "..targDir.." i'm at " .. self.direction) -- this should confirm that theyre acing the right way
 end
 
 function Trtl:moveToPoint(targx,targy,targz)
