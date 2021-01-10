@@ -59,9 +59,6 @@ end
 
 function Trtl:turnRight()
 	self.direction = (self.direction % 4) + 1
-	if self.direction == 0 then
-		self.direction = 1
-	end
 	turtle.turnRight()
 	os.sleep(0.05)
 	print(self.direction)
@@ -69,10 +66,7 @@ end
 
 function Trtl:turnLeft()
 	self.direction = (self.direction % 4) - 1
-	if self.direction == 0 then
-		self.direction = 1
-	end
-	turtle.turnRight()
+	turtle.turnLeft()
 	os.sleep(0.05)
 	print(self.direction)
 end
