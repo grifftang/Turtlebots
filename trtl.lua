@@ -4,8 +4,9 @@ require("Message")
 
 DIRECTIONS = {'north','east','south','west'}
 VALUABLES = {"ore","diamond","iron","lapis","redstone","emerald","coal"}
+TORCH_INTERVAL = 8
+
 --Facing north
--- TORCH_INTERVAL = 8
 -- TORCH_HOME = {2,0,0}
 -- FUEL_HOME = {0,0,0}
 -- ORE_HOME = {4,0,0}
