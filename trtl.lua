@@ -318,7 +318,7 @@ end
 function Trtl:dumpTrash()
 	for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
-	    if string.find(data.name,"ore") == nil and string.find("minecraft:coal",data.name) == nil and string.find("minecraft:torch",data.name) == nil then
+	    if data ~= nil and string.find(data.name,"ore") == nil and string.find(data.name,"minecraft:coal") == nil and string.find(data.name,"minecraft:torch") == nil then
 	      turtle.select(i)
 	      turtle.dropDown()
 	      os.sleep(0.05)
