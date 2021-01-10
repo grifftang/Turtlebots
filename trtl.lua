@@ -12,6 +12,9 @@ Trtl = {id = os.getComputerID(),
 		x = 0,
 		y = 0,
 		z = 0,
+		ogx = x,
+		ogy = y,
+		ogz = z,
 		dimension = 'earth',
 		fuel = 0,
 		time = 0,
@@ -214,10 +217,16 @@ end
 function Trtl:refuel()
 	i = getItemSlot("minecraft:coal")
 	if i == false then --if search for coal comes up false
-		print("baus i have no coal i must go home now")
-		local ogX,ogY,ogZ = self.x,self.y,self.z
-		self:goToFuel()
-		self:getBackToWork(ogX,ogY,ogZ)
+		if self.x == self.ogx and self.y == self.ogy and self.z == self.ogz then
+			print("i am hooome i suck coal from below")
+			suckDown()
+		else
+			print("baus i have no coal i must go home now")
+			local ogX,ogY,ogZ = self.x,self.y,self.z
+			self:goToFuel()
+			self:getBackToWork(ogX,ogY,ogZ)
+		end
+		
 	else
 		print("me see fuel")
 		turtle.select(i) --else i's the index baby
