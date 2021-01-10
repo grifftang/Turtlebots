@@ -248,7 +248,7 @@ function Trtl:checkFuel()
 	x = turtle.getFuelLevel()
 	self.fuel = x
 	local buffer = 5
-	if x < 80--self:distanceFromFuel() + buffer then --if we can barely make it back
+	if x < 80 then--self:distanceFromFuel() + buffer then --if we can barely make it back
 		print("miso thirtsy baus ("..self.fuel..")")
 		self:refuel()
 	end
