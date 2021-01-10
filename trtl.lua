@@ -61,6 +61,7 @@ function Trtl:turnRight()
 	end
 	turtle.turnRight()
 	os.sleep(0.05)
+	print(self.direction)
 end
 
 function Trtl:turnLeft()
