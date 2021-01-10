@@ -320,6 +320,7 @@ end
 
 function Trtl:valuableCheck(item)
 	for i=1,#VALUABLES do
+		print(item,i,VALUABLES[i])
 		if string.find(item,VALUABLES[i]) ~= nil then
 			return true
 		end
