@@ -76,6 +76,19 @@ function Trtl:turnLeft()
 	os.sleep(0.05)
 end
 
+function Trtle:testDirection()
+	self:sayDirection()
+	self:turnLeft()
+	self:sayDirection()
+	self:turnRight()
+	self:sayDirection()
+	self:turnRight()
+	self:sayDirection()
+	self:turnRight()
+	self:sayDirection()
+	self:turnRight()
+end
+
 function Trtl:goFoward()
 	if self.direction == 1 and turtle.forward() then --North = -Z 
 		self.z = self.z - 1
@@ -269,10 +282,10 @@ end
 
 function Trtl:runMiningSequence(length,width,height)
 	for i=1, length do
-		for j=1, width do --Go in a line
+		for j=1, length do --Go in a line of length
 			self:mine(height)
 		end
-		if self.direction == 1 then -- Turn
+		if self.direction == 1 then -- Turn right, 
 			self:turnRight()
 			self:mineColumn(height)
 			self:goFoward()
