@@ -58,7 +58,7 @@ function Trtl:updateFuel()
 end
 
 function Trtl:turnRight()
-	self.direction = (self.direction % 4) + 1
+	self.direction = (self.direction % 5) + 1
 	if self.direction == 0 then
 		self.direction = 1
 	end
@@ -68,9 +68,9 @@ function Trtl:turnRight()
 end
 
 function Trtl:turnLeft()
-	self.direction = (self.direction % 4) - 1
+	self.direction = (self.direction % 5) - 1
 	if self.direction == 0 then
-		self.direction = 1
+		self.direction = 4
 	end
 	turtle.turnLeft()
 	os.sleep(0.05)
