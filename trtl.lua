@@ -213,7 +213,6 @@ function Trtl:moveToPoint(targx,targy,targz)
 	--if no condition is met, we are there baby
 	--use elseif so that you solve one at a time and multiple arent triggered
 	self:checkFuel()
-	self:checkIfTorchNeeded()
 	print("I'm at: ".. "(X: " .. self.x .. " Y: " .. self.y .. " Z: " .. self.z .. ") Headed to: (Y:"..targx.." Y:"..targy.." Z:"..targz..")")
 	if self.x < targx then     -- need to go East (target is +x)
 		self:turnToDirection('east')
@@ -237,6 +236,7 @@ function Trtl:moveToPoint(targx,targy,targz)
 	end
 
 	self:moveToPoint(targx,targy,targz)
+	self:checkIfTorchNeeded()
 	 
 end
 
