@@ -306,6 +306,7 @@ function Trtl:dumpOres(item)
 	    data = turtle.getItemDetail(i)
 
 	    if string.match("Ore",data.name) ~= nil then
+	    	turtle.select(i)
 	        turtle.dropDown()
 	        os.sleep(0.05)
 	    end
@@ -316,6 +317,7 @@ function Trtl:dumpTrash()
 	for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
 	    if string.match("minecraft:coal",data.name) == nil and string.match("minecraft:torch",data.name) == nil then
+	      turtle.select(i)
 	      turtle.dropDown()
 	      os.sleep(0.05)
 	    end
