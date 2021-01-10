@@ -316,7 +316,7 @@ end
 function Trtl:dumpTrash()
 	for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
-	    if string.match("minecraft:coal",data.name) == nil and string.match("minecraft:torch",data.name) == nil then
+	    if string.match("Ore",data.name) == nil and string.match("minecraft:coal",data.name) == nil and string.match("minecraft:torch",data.name) == nil then
 	      turtle.select(i)
 	      turtle.dropDown()
 	      os.sleep(0.05)
@@ -372,7 +372,7 @@ function Trtl:runMiningSequence(length,width,height)
 		for j=1, length do --Go in a line of length
 			self:mine(height)
 		end
-		if self.direction == 1 then -- Turn right, 
+		if self.direction == 1 or self.direction == 2 then -- Turn right, 
 			self:turnRight()
 			self:mineColumn(height)
 			self:goFoward()
