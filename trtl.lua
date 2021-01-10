@@ -76,7 +76,7 @@ function Trtl:goFoward()
 	elseif self.direction == 2 and turtle.forward() then -- East = +X
 		self.x = self.x + 1
 	elseif self.direction == 3 and turtle.forward() then -- South = +Z
-		self.z = self.z - 1
+		self.z = self.z + 1
 	elseif self.direction == 4 and turtle.forward() then -- West = -X
 		self.x = self.x - 1
 	else
