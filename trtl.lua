@@ -355,7 +355,7 @@ end
 
 function Trtl:mine(height)
 	self:checkFuel()
-	--self:checkInventoryFull()
+	self:checkInventoryFull()
 	self:checkIfTorchNeeded()
 	self:mineColumn(height)
 	self:goFoward()
