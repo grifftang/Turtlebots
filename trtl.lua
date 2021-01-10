@@ -134,7 +134,7 @@ function Trtl:mineColumn(height)
 		os.sleep(0.05)
 		self:sayCoords()
 	end
-	for down=1,mineHeight+1 do
+	for down=1,mineHeight do
 		self:down()
 		os.sleep(0.05)
 	end
