@@ -304,7 +304,7 @@ end
 function Trtl:dumpOres(item)
   for i = 1, 16 do
     data = turtle.getItemDetail(i)
-    if string.match("ore",data.name) then
+    if string.match("Ore",data.name) then
       turtle.dropDown()
       s.sleep(0.05)
     end
