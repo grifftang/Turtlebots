@@ -140,16 +140,6 @@ function Trtl:turnToDirection(targDir)
 	print("You wanted "..targDir.." i'm at " .. self.direction) -- this should confirm that theyre acing the right way
 end
 
-
-if self.direction == 1 and turtle.forward() then --North = -Z 
-	self.z = self.z - 1
-elseif self.direction == 2 and turtle.forward() then -- East = +X
-	self.x = self.x + 1
-elseif self.direction == 3 and turtle.forward() then -- South = +Z
-	self.z = self.z - 1
-elseif self.direction == 4 and turtle.forward() then -- West = -X
-
-
 function Trtl:moveToPoint(targx,targy,targz)
 	--find the direction to go and then go
 	--if no condition is met, we are there baby
@@ -170,7 +160,7 @@ function Trtl:moveToPoint(targx,targy,targz)
 		print("we here baby")
 		return true
 	end
-	
+
 	self:moveToPoint(targx,targy,targz)
 	 
 end
@@ -234,6 +224,7 @@ function Trtl:layTorch()
 		for i=1,2 do --forward again
 			self.turnRight()
 		end
+	end
 end
 
 function Trtl:checkIfTorchNeeded()
@@ -241,6 +232,7 @@ function Trtl:checkIfTorchNeeded()
 	if self.x % TORCH_INTERVAL == 0 and self.z % TORCH_INTERVAL == 0 and self.y == 0 then
 		print("pop a flare at " .. self.x ..", " .. self.y .. ", ".. self.z)
 		self:layTorch()
+	end
 end
 
 function Trtl:mine(height)
