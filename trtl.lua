@@ -74,11 +74,12 @@ function Trtl:turnLeft()
 	end
 	turtle.turnRight()
 	os.sleep(0.05)
+	print(self.direction)
 end
 
 function Trtl:testDirection()
 	self:turnLeft()
-	self:sayDirection() --n
+	self:sayDirection() --W
 	self:turnLeft()
 	self:sayDirection() --w
 	self:turnRight()
