@@ -11,4 +11,4 @@ t = Trtl:create{}
 --t:sayTime()
 --t:runMiningSequence(2,5,2)
 t:checkFuel()
-t:moveToPoint(2,2,2)
+t:moveToPoint(407,29,154)

@@ -6,9 +6,9 @@ DIRECTIONS = {'north','east','south','west'}
 TORCH_INTERVAL = 2
 
 Trtl = {id = os.getComputerID(),
-		x = 0,
-		y = 0,
-		z = 0,
+		x = 405,
+		y = 27,
+		z = 152,
 		dimension = 'earth',
 		fuel = 0,
 		time = 0,
