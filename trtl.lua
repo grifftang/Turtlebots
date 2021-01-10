@@ -124,6 +124,23 @@ function Trtl:goFoward()
 	end
 end
 
+function Trtl:back()
+	if self.direction == 1 and turtle.forward() then --North = -Z 
+		self.z = self.z + 1
+	elseif self.direction == 2 and turtle.forward() then -- East = +X
+		self.x = self.x - 1
+	elseif self.direction == 3 and turtle.forward() then -- South = +Z
+		self.z = self.z - 1
+	elseif self.direction == 4 and turtle.forward() then -- West = -X
+		self.x = self.x + 1
+	else
+		turtle.dig()
+		os.sleep(0.05)
+		self:goFoward()
+		os.sleep(0.05)
+	end
+end
+
 function Trtl:sayDirection ()
 	print("Facing: " .. DIRECTIONS[self.direction])
 end
@@ -336,7 +353,7 @@ function Trtl:runLumberjackMeOff(numtrees)
 	
 	self:checkFuel
 
-	self:up()
+	self:goUp()
 	self:turnLeft()
 	self:turnLeft()
 	self:back()
