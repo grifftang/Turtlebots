@@ -61,7 +61,7 @@ function Trtl:updateFuel()
 end
 
 function Trtl:turnRight()
-	self.direction = (self.direction % 5) + 1
+	self.direction = (self.direction % 4) + 1
 	if self.direction == 0 then
 		self.direction = 1
 	end
@@ -71,7 +71,7 @@ function Trtl:turnRight()
 end
 
 function Trtl:turnLeft()
-	self.direction = (self.direction % 5) - 1
+	self.direction = (self.direction % 4) - 1
 	if self.direction == 0 then
 		self.direction = 4
 	end
@@ -248,7 +248,7 @@ function Trtl:checkFuel()
 	x = turtle.getFuelLevel()
 	self.fuel = x
 	local buffer = 5
-	if x < self:distanceFromFuel() + buffer then --if we can barely make it back
+	if x < 80--self:distanceFromFuel() + buffer then --if we can barely make it back
 		print("miso thirtsy baus ("..self.fuel..")")
 		self:refuel()
 	end
