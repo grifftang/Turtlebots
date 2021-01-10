@@ -60,6 +60,7 @@ function Trtl:turnRight()
 		self.direction = 1
 	end
 	turtle.turnRight()
+	os.sleep(0.05)
 end
 
 function Trtl:turnLeft()
@@ -68,6 +69,7 @@ function Trtl:turnLeft()
 		self.direction = 1
 	end
 	turtle.turnRight()
+	os.sleep(0.05)
 end
 
 function Trtl:goFoward()
