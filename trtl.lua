@@ -82,12 +82,16 @@ function Trtl:testDirection()
 	self:sayDirection() --W
 	self:turnLeft()
 	self:sayDirection() --S
-	self:turnRight()
-	self:sayDirection() --W
-	self:turnRight()
-	self:sayDirection() --N
-	self:turnRight()
-	self:sayDirection() --E
+	self:turnLeft()
+	self:sayDirection() --S
+	self:turnLeft()
+	self:sayDirection() --S
+	-- self:turnRight()
+	-- self:sayDirection() --W
+	-- self:turnRight()
+	-- self:sayDirection() --N
+	-- self:turnRight()
+	-- self:sayDirection() --E
 end
 
 function Trtl:goFoward()
