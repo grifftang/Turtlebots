@@ -97,6 +97,10 @@ function Trtl:testDirection()
 	self:sayDirection() --E
 	self:turnRight()
 	self:sayDirection() --E
+	self:turnRight()
+	self:sayDirection() --E
+	self:turnRight()
+	self:sayDirection() --E
 end
 
 function Trtl:goFoward()
