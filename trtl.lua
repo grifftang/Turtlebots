@@ -140,7 +140,7 @@ function Trtl:turnToDirection(targDir)
 		self:turnToDirection(targDir)
 		print("poop")
 	end
-	print("You wanted "..targDir.." i'm at " .. self.direction) -- this should confirm that theyre acing the right way
+	print("You wanted "..targDir.." i'm at " .. DIRECTIONS[self.direction]) -- this should confirm that theyre acing the right way
 end
 
 function Trtl:moveToPoint(targx,targy,targz)
@@ -156,10 +156,10 @@ function Trtl:moveToPoint(targx,targy,targz)
 		self:turnToDirection('west')
 		self:goFoward()
 	elseif self.z < targz then -- need to go South (target is +z)
-		self:turnToDirection('south')
+		self:turnToDirection('north')
 		self:goFoward()
 	elseif self.z > targz then -- need to go North (Target is -Z)
-		self:turnToDirection('north')
+		self:turnToDirection('south')
 		self:goFoward()
 	elseif self.y < targy then -- need to go up
 		self:up()
