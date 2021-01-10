@@ -1,8 +1,6 @@
 -- suck my toes krab
--- require("tools4fools")
--- require("Message")
-os.loadAPI("tools4fools")
-os.loadAPI("Message")
+require("tools4fools")
+require("Message")
 
 DIRECTIONS = {'north','east','south','west'}
 TORCH_INTERVAL = 8
