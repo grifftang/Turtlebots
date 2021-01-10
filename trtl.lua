@@ -3,7 +3,7 @@ require("tools4fools")
 require("Message")
 
 DIRECTIONS = {'north','east','south','west'}
-TORCH_INTERVAL = 2
+TORCH_INTERVAL = 8
 TORCH_HOME = {1,0,0}
 FUEL_HOME = {0,0,0}
 ORE_HOME = {2,0,0}
@@ -93,6 +93,8 @@ function Trtl:testDirection()
 	self:sayDirection() --W
 	self:turnRight()
 	self:sayDirection() --N
+	self:turnRight()
+	self:sayDirection() --E
 	self:turnRight()
 	self:sayDirection() --E
 end
