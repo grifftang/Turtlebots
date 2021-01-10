@@ -76,7 +76,7 @@ function Trtl:turnLeft()
 	os.sleep(0.05)
 end
 
-function Trtle:testDirection()
+function Trtl:testDirection()
 	self:sayDirection()
 	self:turnLeft()
 	self:sayDirection()
