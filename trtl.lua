@@ -71,7 +71,7 @@ function Trtl:turnRight()
 end
 
 function Trtl:turnLeft()
-	self.direction = (self.direction % 4) - 1
+	self.direction = (self.direction % 5) - 1
 	if self.direction == 0 then
 		self.direction = 4
 	end
