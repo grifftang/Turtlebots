@@ -262,11 +262,11 @@ function Trtl:layTorch()
 		print("me havo torcho!!!")
 		turtle.select(i)
 		for i=1,2 do --flip it in reverse
-			self.turnRight()
+			self:turnRight()
 		end
 		turtle.place()
 		for i=1,2 do --forward again
-			self.turnRight()
+			self:turnRight()
 		end
 	end
 end
