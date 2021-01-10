@@ -315,6 +315,19 @@ function Trtl:dumpOres(item)
     end
 end
 
+<<<<<<< HEAD
+=======
+function Trtl:valuableCheck(item)
+	for i=1,#VALUABLES do
+		if string.find(item,VALUABLES[i]) ~= nil then
+			return true
+		end
+	end
+	return false
+end
+
+
+>>>>>>> f9c738b4e381ec151b7cd64a2b4b8716d6415138
 function Trtl:dumpTrash()
 	for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
