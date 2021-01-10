@@ -5,10 +5,15 @@ require("Message")
 DIRECTIONS = {'north','east','south','west'}
 VALUABLES = {"ore","diamond","iron","lapis","redstone","emerald","coal"}
 TORCH_INTERVAL = 8
-TORCH_HOME = {2,0,0}
-FUEL_HOME = {0,0,0}
-ORE_HOME = {4,0,0}
-TRASH_HOME = {6,0,0}
+-- TORCH_HOME = {2,0,0}
+-- FUEL_HOME = {0,0,0}
+-- ORE_HOME = {4,0,0}
+-- TRASH_HOME = {6,0,0}
+--FACING THE OTHER WAY
+TORCH_HOME = {4,0,0}
+FUEL_HOME = {6,0,0}
+ORE_HOME = {2,0,0}
+TRASH_HOME = {0,0,0}
 
 Trtl = {id = os.getComputerID(),
 		x = 0,
