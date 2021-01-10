@@ -317,7 +317,7 @@ function Trtl:dumpOres(item)
 end
 
 function Trtl:valuableCheck(item)
-	for i=1,VALUABLES.getn() do
+	for i=1,#VALUABLES do
 		if string.find(item,VALUABLES[i]) ~= nil then
 			return true
 		end
