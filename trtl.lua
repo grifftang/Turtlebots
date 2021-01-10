@@ -3,7 +3,6 @@ require("tools4fools")
 require("Message")
 
 DIRECTIONS = {'north','east','south','west'}
-VALUABLES = {"ore","diamond","iron","lapis","redstone","emerald","coal"}
 TORCH_INTERVAL = 8
 TORCH_HOME = {1,0,0}
 FUEL_HOME = {0,0,0}
@@ -308,7 +307,7 @@ function Trtl:dumpOres(item)
     for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
 	    print(data.name)
-	    if self:valuableCheck() then
+	    if string.find(data.name,"ore") ~= nil then
 	    	turtle.select(i)
 	        turtle.dropDown()
 	        os.sleep(0.05)
@@ -316,25 +315,13 @@ function Trtl:dumpOres(item)
     end
 end
 
-function Trtl:valuableCheck(item)
-	for i=1,VALUABLES.getn() do
-		if string.find(item,VALUABLES[i]) ~= nil then
-			return true
-		end
-	end
-	return false
-end
-
-
 function Trtl:dumpTrash()
 	for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
-	    if data ~= nil then
-	    	if string.find(data.name,"ore") == nil and string.find(data.name,"minecraft:coal") == nil and string.find(data.name,"minecraft:torch") == nil then
-		        turtle.select(i)
-		        turtle.dropDown()
-		        os.sleep(0.05)
-		    end
+	    if string.find(data.name,"ore") == nil and string.find("minecraft:coal",data.name) == nil and string.find("minecraft:torch",data.name) == nil then
+	      turtle.select(i)
+	      turtle.dropDown()
+	      os.sleep(0.05)
 	    end
     end
 end
@@ -420,7 +407,6 @@ function Trtl:runLumberjackMeOff(numtrees)
 
 	--tree planting
 	for i = 0, numtrees do
-  		self:down()
   		turtle.select(2)
   		turtle.placeDown()
   		self:back()
