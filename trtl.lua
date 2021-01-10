@@ -270,7 +270,7 @@ end
 function Trtl:runMiningSequence(length,width,height)
 	for i=1, width do
 		for j=1, length do --Go in a line
-			self:mine()
+			self:mine(height)
 		end
 		if self.direction == 1 then -- Turn
 			self:turnRight()
