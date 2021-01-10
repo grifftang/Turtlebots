@@ -150,6 +150,8 @@ function Trtl:mineColumn(height)
 		os.sleep(0.05)
 		self:up()
 		os.sleep(0.05)
+		turtle.dig("right")
+		os.sleep(0.05)
 		self:sayCoords()
 	end
 	for down=1,mineHeight do
@@ -286,7 +288,7 @@ function Trtl:mine(height)
 end
 
 function Trtl:runMiningSequence(length,width,height)
-	for i=1, length do
+	for i=1, width do
 		for j=1, length do --Go in a line of length
 			self:mine(height)
 		end
