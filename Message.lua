@@ -1,5 +1,6 @@
 -- suck my toes krab
-require("tools4fools")
+os.loadAPI("tools4fools")
+--require("tools4fools")
 Message = { time = getTime(),
 			sender = nil,
 			reciever = '',
