@@ -288,7 +288,7 @@ function Trtl:checkInventoryFull()
     end
   end
   --if it isnt full
-  local x,y,z = self.x,self.y,selfz
+  local x,y,z = self.x,self.y,self.z
   self:dropRocks()
   self:getBackToWork(x,y,z)
 end
