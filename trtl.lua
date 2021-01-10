@@ -351,7 +351,7 @@ function Trtl:runLumberjackMeOff(numtrees)
 	print("fuel goes in slot 1")
 	print("Please make sure there is dirt in slot 2, saplings in slot 3, and the respective log in slot 4")
 	
-	self:checkFuel
+	self:checkFuel()
 
 	self:goUp()
 	self:turnLeft()
