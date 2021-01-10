@@ -268,8 +268,8 @@ function Trtl:mine(height)
 end
 
 function Trtl:runMiningSequence(length,width,height)
-	for i=1, width do
-		for j=1, length do --Go in a line
+	for i=1, length do
+		for j=1, width do --Go in a line
 			self:mine(height)
 		end
 		if self.direction == 1 then -- Turn
