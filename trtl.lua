@@ -3,15 +3,18 @@ require("tools4fools")
 require("Message")
 
 DIRECTIONS = {'north','east','south','west'}
-TORCH_INTERVAL = 2
+TORCH_INTERVAL = 8
 TORCH_HOME = {1,0,0}
 FUEL_HOME = {0,0,0}
 ORE_HOME = {2,0,0}
 
 Trtl = {id = os.getComputerID(),
-		x = 405,
-		y = 27,
-		z = 152,
+		x = 0,
+		y = 0,
+		z = 0,
+		ogx = x,
+		ogy = y,
+		ogz = z,
 		dimension = 'earth',
 		fuel = 0,
 		time = 0,
@@ -59,6 +62,9 @@ end
 
 function Trtl:turnRight()
 	self.direction = (self.direction % 4) + 1
+	if self.direction == 0 then
+		self.direction = 1
+	end
 	turtle.turnRight()
 	os.sleep(0.05)
 	print(self.direction)
@@ -66,26 +72,35 @@ end
 
 function Trtl:turnLeft()
 	self.direction = (self.direction % 4) - 1
+	if self.direction == 0 then
+		self.direction = 4
+	end
 	turtle.turnLeft()
 	os.sleep(0.05)
 	print(self.direction)
 end
 
 function Trtl:testDirection()
-	self:turnLeft()
-	self:sayDirection() --W
-	self:turnLeft()
-	self:sayDirection() --S
-	self:turnLeft()
-	self:sayDirection() --S
-	self:turnLeft()
-	self:sayDirection() --S
-	-- self:turnRight()
+	-- self:turnLeft()
 	-- self:sayDirection() --W
-	-- self:turnRight()
-	-- self:sayDirection() --N
-	-- self:turnRight()
-	-- self:sayDirection() --E
+	-- self:turnLeft()
+	-- self:sayDirection() --S
+	-- self:turnLeft()
+	-- self:sayDirection() --S
+	-- self:turnLeft()
+	-- self:sayDirection() --S
+	self:turnRight()
+	self:sayDirection() --W
+	self:turnRight()
+	self:sayDirection() --N
+	self:turnRight()
+	self:sayDirection() --E
+	self:turnRight()
+	self:sayDirection() --E
+	self:turnRight()
+	self:sayDirection() --E
+	self:turnRight()
+	self:sayDirection() --E
 end
 
 function Trtl:goFoward()
@@ -143,6 +158,8 @@ function Trtl:mineColumn(height)
 		turtle.dig("right")
 		os.sleep(0.05)
 		self:up()
+		os.sleep(0.05)
+		turtle.dig("right")
 		os.sleep(0.05)
 		self:sayCoords()
 	end
@@ -206,10 +223,17 @@ end
 function Trtl:refuel()
 	i = getItemSlot("minecraft:coal")
 	if i == false then --if search for coal comes up false
-		print("baus i have no coal i must go home now")
-		local ogX,ogY,ogZ = self.x,self.y,self.z
-		self:goToFuel()
-		self:getBackToWork(ogX,ogY,ogZ)
+		if self.x == 0 and self.y == 0 and self.z == 0 then--if self.x == self.ogx and self.y == self.ogy and self.z == self.ogz then
+			print("i am hooome i suck coal from below")
+			turtle.suckDown()
+			self:refuel()
+		else
+			print("baus i have no coal i must go home now")
+			local ogX,ogY,ogZ = self.x,self.y,self.z
+			self:goToFuel()
+			self:getBackToWork(ogX,ogY,ogZ)
+		end
+		
 	else
 		print("me see fuel")
 		turtle.select(i) --else i's the index baby
@@ -228,7 +252,7 @@ function Trtl:checkFuel()
 	x = turtle.getFuelLevel()
 	self.fuel = x
 	local buffer = 5
-	if x < self:distanceFromFuel() + buffer then --if we can barely make it back
+	if x < 80 then--self:distanceFromFuel() + buffer then --if we can barely make it back
 		print("miso thirtsy baus ("..self.fuel..")")
 		self:refuel()
 	end
@@ -254,11 +278,11 @@ function Trtl:layTorch()
 		print("me havo torcho!!!")
 		turtle.select(i)
 		for i=1,2 do --flip it in reverse
-			self.turnRight()
+			self:turnRight()
 		end
 		turtle.place()
 		for i=1,2 do --forward again
-			self.turnRight()
+			self:turnRight()
 		end
 	end
 end
@@ -280,7 +304,7 @@ function Trtl:mine(height)
 end
 
 function Trtl:runMiningSequence(length,width,height)
-	for i=1, length do
+	for i=1, width do
 		for j=1, length do --Go in a line of length
 			self:mine(height)
 		end
@@ -296,6 +320,7 @@ function Trtl:runMiningSequence(length,width,height)
 			self:turnLeft()
 		end
 	end
+	self:moveToPoint(0,0,0)
 end
 
 
