@@ -306,6 +306,7 @@ function Trtl:dumpOres(item)
     data = turtle.getItemDetail(i)
     if string.match("ore",data.name) then
       turtle.dropDown()
+      s.sleep(0.05)
     end
   end
 end
@@ -315,6 +316,7 @@ function Trtl:dumpTrash()
     data = turtle.getItemDetail(i)
     if not string.match("minecraft:coal",data.name) and not string.match("minecraft:torch",data.name) then
       turtle.dropDown()
+      s.sleep(0.05)
     end
   end
 end
@@ -323,6 +325,7 @@ end
 function Trtl:goToTorches()
 	self:moveToPoint(TORCH_HOME[1],TORCH_HOME[2],TORCH_HOME[3])
 	turtle.suckDown()
+	s.sleep(0.05)
 end
 
 function Trtl:layTorch()
