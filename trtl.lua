@@ -308,7 +308,7 @@ function Trtl:dumpOres(item)
     for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
 	    print(data.name)
-	    if self:valuableCheck()
+	    if self:valuableCheck() then
 	    	turtle.select(i)
 	        turtle.dropDown()
 	        os.sleep(0.05)
@@ -320,6 +320,8 @@ function Trtl:valuableCheck(item)
 	for i=1,VALUABLES.getn() do
 		if string.find(item,VALUABLES[i]) ~= nil then
 			return true
+		end
+	end
 	return false
 end
 
