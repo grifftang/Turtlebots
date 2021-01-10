@@ -309,7 +309,7 @@ function Trtl:dumpOres(item)
 	    data = turtle.getItemDetail(i)
 	    print(data.name)
 	    if data ~= nil then
-		    if self:valuableCheck() then
+		    if self:valuableCheck(data.name) then
 		    	turtle.select(i)
 		        turtle.dropDown()
 		        os.sleep(0.05)
