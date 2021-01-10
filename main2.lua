@@ -11,4 +11,4 @@ t = Trtl:create{}
 --t:sayTime()
 
 --t:testDirection()
-t:runLumberjackMeOff(5) --L,W,H
+t:runLumberjackMeOff(3) --L,W,H
