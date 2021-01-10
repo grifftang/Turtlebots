@@ -4,7 +4,7 @@ Instructions:
 > pastebin run p8PJVxC4
 
 2. pastebin the following pull.lua
-> pastbin get LfbZqei7 pull.lua
+> pastebin get LfbZqei7 pull.lua
 
 
 

@@ -244,8 +244,9 @@ function Trtl:goToFuel()
 	self.refuel()
 end
 
-function Trtl:getBackToWork(x,y,z)
+function Trtl:getBackToWork(x,y,z,direction)
 	self:moveToPoint(x,y,z)
+	self:turnToDirection(DIRECTIONS[direction])
 end
 
 function Trtl:refuel()
@@ -257,9 +258,9 @@ function Trtl:refuel()
 			self:refuel()
 		else
 			print("baus i have no coal i must go home now")
-			local ogX,ogY,ogZ = self.x,self.y,self.z
+			local ogX,ogY,ogZ,ogD = self.x,self.y,self.z,self.direction
 			self:goToFuel()
-			self:getBackToWork(ogX,ogY,ogZ)
+			self:getBackToWork(ogX,ogY,ogZ,ogD)
 		end
 		
 	else
@@ -294,9 +295,9 @@ function Trtl:checkInventoryFull()
     end
   end
   --if it isnt full
-  local x,y,z = self.x,self.y,self.z
+  local x,y,z,d = self.x,self.y,self.z, self.direction
   self:dropRocks()
-  self:getBackToWork(x,y,z)
+  self:getBackToWork(x,y,z,d)
 end
 
 function Trtl:dropRocks()
@@ -358,9 +359,9 @@ function Trtl:layTorch()
 	i = getItemSlot("minecraft:torch")
 	if i == false then
 		print("me no havo torcho")
-		local x,y,z = self.x,self.y,self.z
+		local x,y,z,d = self.x,self.y,self.z,self.direction
 		self:goToTorches()
-		self:getBackToWork(x,y,z)
+		self:getBackToWork(x,y,z,d)
 	else
 		print("me havo torcho!!!")
 		turtle.select(i)
