@@ -288,12 +288,13 @@ function Trtl:checkInventoryFull()
     end
   end
   --if it isnt full 
-  self:dropRocks()
+  --self:dropRocks()
 end
 
 function Trtl:dropRocks()
 	--first ore
-	self:moveToPoint
+	--self:moveToPoint
+end
 
 
 function Trtl:goToTorches()
