@@ -366,7 +366,7 @@ function Trtl:runLumberjackMeOff(numtrees)
 	
 	self:checkFuel()
 
-	self:goUp()
+	self:up()
 	self:turnLeft()
 	self:turnLeft()
 	self:back()
@@ -375,7 +375,7 @@ function Trtl:runLumberjackMeOff(numtrees)
 
 	--tree planting
 	for i = 0, numtrees do
-  		self:digDown()
+  		self:down()
   		turtle.select(2)
   		turtle.placeDown()
   		self:back()
@@ -386,26 +386,26 @@ function Trtl:runLumberjackMeOff(numtrees)
   		self:back()
 	end
 	self:turnLeft()
-	self:forward()
+	self:goFoward()
 	self:turnRight()
 
 	--tree chopping
 	while true do
   		os.sleep(30)
   		for i = 0, numtrees do
-    		self:forward()
-    		self:forward()
-    		self:forward()
-    		self:forward()
+    		self:goFoward()
+    		self:goFoward()
+    		self:goFoward()
+    		self:goFoward()
     		self:turnRight()
     		turtle.select(4)
     		-- if the tree has grown
     		if turtle.compare() then
       			turtle.dig()
-      			self:forward()
+      			self:goFoward()
       			-- harvest the tree
       			while turtle.detectUp() do
-      				turtle.digUp()  
+      				--turtle.digUp()  
       				self:up()
       			end
       			-- return to the ground
@@ -420,13 +420,13 @@ function Trtl:runLumberjackMeOff(numtrees)
     		self:turnLeft()
   		end
   		-- round the corner
-  		self:forward()
+  		self:goFoward()
   		self:turnRight()
-  		self:forward()
+  		self:goFoward()
   		if turtle.getItemCount(5) == 64 then
-  			self:turnLeft()
+  			self:goFoward()
   			self:forward()
-  			self:forward()
+  			self:goFoward()
   			self:down()
   			turtle.select(5)
   			turtle.drop()
@@ -435,9 +435,9 @@ function Trtl:runLumberjackMeOff(numtrees)
   			self:back()
   			self:turnRight()
   		end
-  		self:forward()
+  		self:goFoward()
   		self:turnRight()
-  		self:forward()
+  		self:goFoward()
 	end
 end
 
