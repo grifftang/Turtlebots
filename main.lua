@@ -9,6 +9,6 @@ t = Trtl:create{}
 -- t:sayDirection{}
 --t:runMiningSequence(3)
 --t:sayTime()
-t:runMiningSequence(2,5,3) --W,L,H
+t:runMiningSequence(3,6,1) --L,W,H
 -- t:checkFuel()
 -- t:moveToPoint(407,29,154)
