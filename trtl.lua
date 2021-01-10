@@ -306,7 +306,7 @@ end
 function Trtl:dumpOres(item)
     for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
-
+	    print(data.name)
 	    if string.find("ore",data.name) ~= nil then
 	    	turtle.select(i)
 	        turtle.dropDown()
