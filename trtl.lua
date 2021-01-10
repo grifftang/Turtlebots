@@ -297,7 +297,7 @@ function Trtl:dropRocks()
 	self:dumpOres()
 
 	--then everything else
-	self:moveToPoint(TRASH_HOME[1],TRASH_HOME[2],TRASH_HOME[3],)
+	self:moveToPoint(TRASH_HOME[1],TRASH_HOME[2],TRASH_HOME[3])
 	self:dumpTrash()
 end
 
