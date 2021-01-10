@@ -9,9 +9,9 @@ FUEL_HOME = {0,0,0}
 ORE_HOME = {2,0,0}
 
 Trtl = {id = os.getComputerID(),
-		x = 405,
-		y = 27,
-		z = 152,
+		x = 0,
+		y = 0,
+		z = 0,
 		dimension = 'earth',
 		fuel = 0,
 		time = 0,
@@ -304,6 +304,7 @@ function Trtl:runMiningSequence(length,width,height)
 			self:turnLeft()
 		end
 	end
+	self:moveToPoint(0,0,0)
 end
 
 
