@@ -174,6 +174,7 @@ end
 
 function Trtl:getBackToWork(x,y,z)
 	self:moveToPoint(x,y,z)
+end
 
 function Trtl:refuel()
 	i = getItemSlot("minecraft:coal")
