@@ -7,6 +7,7 @@ TORCH_INTERVAL = 8
 TORCH_HOME = {1,0,0}
 FUEL_HOME = {0,0,0}
 ORE_HOME = {2,0,0}
+TRASH_HOME = {2,0,0}
 
 Trtl = {id = os.getComputerID(),
 		x = 0,
@@ -280,8 +281,20 @@ function Trtl:checkFuel()
 end
 
 function Trtl:checkInventoryFull()
-
+  for i = 1, 16 do
+    count = turtle.getItemCount(i)
+    if count == 0 then
+    	return false
+    end
+  end
+  --if it isnt full 
+  self:dropRocks()
 end
+
+function Trtl:dropRocks()
+	--first ore
+	self:moveToPoint
+
 
 function Trtl:goToTorches()
 	self:moveToPoint(TORCH_HOME[1],TORCH_HOME[2],TORCH_HOME[3])
@@ -318,7 +331,7 @@ end
 
 function Trtl:mine(height)
 	self:checkFuel()
-	self:checkInventoryFull()
+	--self:checkInventoryFull()
 	self:checkIfTorchNeeded()
 	self:mineColumn(height)
 	self:goFoward()
