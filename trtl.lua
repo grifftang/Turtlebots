@@ -307,7 +307,7 @@ function Trtl:dumpOres(item)
     for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
 	    print(data.name)
-	    if string.find("ore",data.name) ~= nil then
+	    if string.find(data.name,"ore") ~= nil then
 	    	turtle.select(i)
 	        turtle.dropDown()
 	        os.sleep(0.05)
@@ -318,7 +318,7 @@ end
 function Trtl:dumpTrash()
 	for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
-	    if string.find("ore",data.name) == nil and string.find("minecraft:coal",data.name) == nil and string.find("minecraft:torch",data.name) == nil then
+	    if string.find(data.name,"ore") == nil and string.find("minecraft:coal",data.name) == nil and string.find("minecraft:torch",data.name) == nil then
 	      turtle.select(i)
 	      turtle.dropDown()
 	      os.sleep(0.05)
