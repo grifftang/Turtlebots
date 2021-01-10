@@ -287,8 +287,10 @@ function Trtl:checkInventoryFull()
     	return false
     end
   end
-  --if it isnt full 
+  --if it isnt full
+  local x,y,z = self.x,self.y,selfz
   self:dropRocks()
+  self:getBackToWork(x,y,z)
 end
 
 function Trtl:dropRocks()
@@ -305,7 +307,7 @@ function Trtl:dumpOres(item)
     for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
 
-	    if string.match("Ore",data.name) ~= nil then
+	    if string.find("Ore",data.name) ~= nil then
 	    	turtle.select(i)
 	        turtle.dropDown()
 	        os.sleep(0.05)
@@ -316,7 +318,7 @@ end
 function Trtl:dumpTrash()
 	for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
-	    if string.match("Ore",data.name) == nil and string.match("minecraft:coal",data.name) == nil and string.match("minecraft:torch",data.name) == nil then
+	    if string.find("Ore",data.name) == nil and string.find("minecraft:coal",data.name) == nil and string.find("minecraft:torch",data.name) == nil then
 	      turtle.select(i)
 	      turtle.dropDown()
 	      os.sleep(0.05)
