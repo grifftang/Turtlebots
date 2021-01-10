@@ -303,21 +303,21 @@ end
 
 function Trtl:dumpOres(item)
   for i = 1, 16 do
-    data = turtle.getItemDetail(i)
-    if string.match("Ore",data.name) then
-      turtle.dropDown()
-      s.sleep(0.05)
-    end
+	    data = turtle.getItemDetail(i)
+	    if string.match("Ore",data.name) then
+	      turtle.dropDown()
+	      s.sleep(0.05)
+	    end
   end
 end
 
 function Trtl:dumpTrash()
 	for i = 1, 16 do
-    data = turtle.getItemDetail(i)
-    if not string.match("minecraft:coal",data.name) and not string.match("minecraft:torch",data.name) then
-      turtle.dropDown()
-      s.sleep(0.05)
-    end
+	    data = turtle.getItemDetail(i)
+	    if not string.match("minecraft:coal",data.name) and not string.match("minecraft:torch",data.name) then
+	      turtle.dropDown()
+	      s.sleep(0.05)
+	    end
   end
 end
 
