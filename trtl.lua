@@ -126,7 +126,7 @@ end
 
 
 function Trtl:mineColumn(height)
-	mineHeight = height or 4
+	mineHeight = height
 	for up=1,mineHeight do
 		turtle.dig("right")
 		os.sleep(0.05)
@@ -268,8 +268,8 @@ function Trtl:mine(height)
 end
 
 function Trtl:runMiningSequence(length,width,height)
-	for i=1, length do
-		for j=1, width do --Go in a line
+	for i=1, width do
+		for j=1, length do --Go in a line
 			self:mine()
 		end
 		if self.direction == 1 then -- Turn
