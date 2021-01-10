@@ -302,23 +302,23 @@ function Trtl:dropRocks()
 end
 
 function Trtl:dumpOres(item)
-  for i = 1, 16 do
+    for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
 	    if string.match("Ore",data.name) then
-	      turtle.dropDown()
-	      os.sleep(0.05)
+	        turtle.dropDown()
+	        os.sleep(0.05)
 	    end
-  end
+    end
 end
 
 function Trtl:dumpTrash()
 	for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
-	    if not string.match("minecraft:coal",data.name) and not string.match("minecraft:torch",data.name) then
+	    if string.match("minecraft:coal",data.name) ~= nil and string.match("minecraft:torch",data.name) ~= nil then
 	      turtle.dropDown()
 	      os.sleep(0.05)
 	    end
-  end
+    end
 end
 
 
