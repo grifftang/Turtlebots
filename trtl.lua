@@ -136,6 +136,7 @@ function Trtl:turnToDirection(targDir)
 	if DIRECTIONS[self.direction] ~= targDir then
 		self:turnRight()
 		self:turnToDirection(targDir)
+		print("poop")
 	end
 	--print("You wanted "..targDir.." i'm at " .. self.direction) -- this should confirm that theyre acing the right way
 end
@@ -146,12 +147,16 @@ function Trtl:moveToPoint(targx,targy,targz)
 	--use elseif so that you solve one at a time and multiple arent triggered
 	if self.x < targx then     -- need to go East (target is +x)
 		self:turnToDirection('east')
+		self:goFoward()
 	elseif self.x > targx then -- need to go West (target is -x)
 		self:turnToDirection('west')
+		self:goFoward()
 	elseif self.z < targz then -- need to go South (target is +z)
 		self:turnToDirection('south')
+		self:goFoward()
 	elseif self.z > targz then -- need to go North (Target is -Z)
 		self:turnToDirection('north')
+		self:goFoward()
 	elseif self.y < targy then -- need to go up
 		self:up()
 	elseif self.y > targy then -- need to go down
