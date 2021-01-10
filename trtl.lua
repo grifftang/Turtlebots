@@ -7,7 +7,7 @@ TORCH_INTERVAL = 8
 TORCH_HOME = {1,0,0}
 FUEL_HOME = {0,0,0}
 ORE_HOME = {2,0,0}
-TRASH_HOME = {2,0,0}
+TRASH_HOME = {3,0,0}
 
 Trtl = {id = os.getComputerID(),
 		x = 0,
@@ -282,18 +282,41 @@ end
 
 function Trtl:checkInventoryFull()
   for i = 1, 16 do
-    count = turtle.getItemCount(i)
-    if count == 0 then
+    local count = turtle.getItemCount(i)
+    if count == 0 then -- still has space
     	return false
     end
   end
   --if it isnt full 
-  --self:dropRocks()
+  self:dropRocks()
 end
 
 function Trtl:dropRocks()
 	--first ore
-	--self:moveToPoint
+	self:moveToPoint(ORE_HOME[1],ORE_HOME[2],ORE_HOME[3])
+	self:dumpOres()
+
+	--then everything else
+	self:moveToPoint(TRASH_HOME[1],TRASH_HOME[2],TRASH_HOME[3],)
+	self:dumpTrash()
+end
+
+function Trtl:dumpOres(item)
+  for i = 1, 16 do
+    data = turtle.getItemDetail(i)
+    if string.match("ore",data.name) then
+      turtle.dropDown()
+    end
+  end
+end
+
+function Trtl:dumpTrash()
+	for i = 1, 16 do
+    data = turtle.getItemDetail(i)
+    if not string.match("minecraft:coal",data.name) and not string.match("minecraft:torch",data.name) then
+      turtle.dropDown()
+    end
+  end
 end
 
 
