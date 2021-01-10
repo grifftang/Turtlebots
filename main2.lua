@@ -1,7 +1,7 @@
 require("trtl")
 print("ready for orders baus")
 
-t = trtl:create{}
+t = Trtl:create{}
 --t:setID()
 --print(t.id)
 -- print(t.id)
@@ -11,4 +11,4 @@ t = trtl:create{}
 --t:sayTime()
 
 --t:testDirection()
-t:runLumberjackMeOff(10) --L,W,H
+t:runLumberjackMeOff(10e) --L,W,H
