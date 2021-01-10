@@ -9,8 +9,6 @@ t = Trtl:create{}
 -- t:sayDirection{}
 --t:runMiningSequence(3)
 --t:sayTime()
---t:runMiningSequence(2,5,2)
-poo = io.read()
-print(poo)
-t:checkFuel()
-t:moveToPoint(407,29,154)
+t:runMiningSequence(2,5,3)
+-- t:checkFuel()
+-- t:moveToPoint(407,29,154)

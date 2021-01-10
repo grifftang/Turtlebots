@@ -4,6 +4,9 @@ require("Message")
 
 DIRECTIONS = {'north','east','south','west'}
 TORCH_INTERVAL = 2
+TORCH_HOME = {1,0,0}
+FUEL_HOME = {0,0,0}
+ORE_HOME = {2,0,0}
 
 Trtl = {id = os.getComputerID(),
 		x = 405,
@@ -179,7 +182,7 @@ end
 
 
 function Trtl:goToFuel()
-	self:moveToPoint(0,0,0)
+	self:moveToPoint(FUEL_HOME[1],FUEL_HOME[2],FUEL_HOME[3])
 	turtle.suckDown()
 	self.refuel()
 end
@@ -223,10 +226,18 @@ function Trtl:checkInventoryFull()
 
 end
 
+function Trtl:goToTorches()
+	self:moveToPoint(TORCH_HOME[1],TORCH_HOME[2],TORCH_HOME[3])
+	turtle.suckDown()
+end
+
 function Trtl:layTorch()
 	i = getItemSlot("minecraft:torch")
 	if i == false then
 		print("me no havo torcho")
+		local x,y,z = self.x,self.y,self.z
+		self:goToTorches()
+		self:getBackToWork(x,y,z)
 	else
 		print("me havo torcho!!!")
 		turtle.select(i)
@@ -251,6 +262,7 @@ end
 function Trtl:mine(height)
 	self:checkFuel()
 	self:checkInventoryFull()
+	self:checkIfTorchNeeded()
 	self:mineColumn(height)
 	self:goFoward()
 end
