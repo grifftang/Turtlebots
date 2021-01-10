@@ -187,7 +187,7 @@ function Trtl:moveToPoint(targx,targy,targz)
 	--if no condition is met, we are there baby
 	--use elseif so that you solve one at a time and multiple arent triggered
 	self:checkFuel()
-	print("I'm at: ".. "(X: " .. self.x .. " Y: " .. self.y .. " Z: " .. self.z .. ") Headed to: (Y:"..targx.." Y:"..targy.." Z:"..targz..")")
+	print("I'm at: ".. "(X: " .. self.x .. " Y: " .. self.y .. " Z: " .. sielf.z .. ") Headed to: (Y:"..targx.." Y:"..targy.." Z:"..targz..")")
 	if self.x < targx then     -- need to go East (target is +x)
 		self:turnToDirection('east')
 		self:goFoward()
@@ -334,80 +334,80 @@ function Trtl:runLumberjackMeOff(numtrees)
 	print("fuel goes in slot 1")
 	print("Please make sure there is dirt in slot 2, saplings in slot 3, and the respective log in slot 4")
 	
-	--@XxGRIFFASCOPESxXadd your fueling code in here plz
+	self:checkFuel
 
-	turtle.up()
-	turtle.turnLeft()
-	turtle.turnLeft()
-	turtle.back()
-	turtle.back()
-	turtle.back()
+	self:up()
+	self:turnLeft()
+	self:turnLeft()
+	self:back()
+	self:back()
+	self:back()
 
 	--tree planting
 	for i = 0, numtrees do
-  		turtle.digDown()
+  		self:digDown()
   		turtle.select(2)
   		turtle.placeDown()
-  		turtle.back()
+  		self:back()
   		turtle.select(3)
   		turtle.place()
-  		turtle.back()
-  		turtle.back()
-  		turtle.back()
+  		self:back()
+  		self:back()
+  		self:back()
 	end
-	turtle.turnLeft()
-	turtle.forward()
-	turtle.turnRight()
+	self:turnLeft()
+	self:forward()
+	self:turnRight()
 
 	--tree chopping
 	while true do
   		os.sleep(30)
   		for i = 0, numtrees do
-    		turtle.forward()
-    		turtle.forward()
-    		turtle.forward()
-    		turtle.forward()
-    		turtle.turnRight()
+    		self:forward()
+    		self:forward()
+    		self:forward()
+    		self:forward()
+    		self:turnRight()
     		turtle.select(4)
     		-- if the tree has grown
     		if turtle.compare() then
       			turtle.dig()
-      			turtle.forward()
+      			self:forward()
       			-- harvest the tree
       			while turtle.detectUp() do
       				turtle.digUp()  
-      				turtle.up()
+      				self:up()
       			end
       			-- return to the ground
       			while not turtle.detectDown() do
-       				turtle.down()
+       				self:down()
       			end
       			-- plant a new sapling
-      			turtle.back()
+      			self:back()
       			turtle.select(3)
       			turtle.place()
     		end
-    		turtle.turnLeft()
+    		self:turnLeft()
   		end
   		-- round the corner
-  		turtle.forward()
-  		turtle.turnRight()
-  		turtle.forward()
+  		self:forward()
+  		self:turnRight()
+  		self:forward()
   		if turtle.getItemCount(5) == 64 then
-  			turtle.turnLeft()
-  			turtle.forward()
-  			turtle.forward()
-  			turtle.down()
+  			self:turnLeft()
+  			self:forward()
+  			self:forward()
+  			self:down()
   			turtle.select(5)
   			turtle.drop()
-  			turtle.up()
-  			turtle.back()
-  			turtle.back()
-  			turtle.turnRight()
+  			self:up()
+  			self:back()
+  			self:back()
+  			self:turnRight()
   		end
-  		turtle.forward()
-  		turtle.turnRight()
-  		turtle.forward()
+  		self:forward()
+  		self:turnRight()
+  		self:forward()
 	end
 end
 
