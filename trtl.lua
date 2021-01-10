@@ -58,7 +58,7 @@ function Trtl:updateFuel()
 end
 
 function Trtl:turnRight()
-	self.direction = (self.direction + 1) % 5
+	self.direction = (self.direction % 4) + 1
 	if self.direction == 0 then
 		self.direction = 1
 	end
@@ -68,7 +68,7 @@ function Trtl:turnRight()
 end
 
 function Trtl:turnLeft()
-	self.direction = (self.direction - 1) % 5
+	self.direction = (self.direction % 4) - 1
 	if self.direction == 0 then
 		self.direction = 1
 	end
