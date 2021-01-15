@@ -255,7 +255,7 @@ end
 function Trtl:refuel()
 	i = getItemSlot("minecraft:coal")
 	if i == false then --if search for coal comes up false
-		if self.x == 0 and self.y == 0 and self.z == 0 then--if self.x == self.ogx and self.y == self.ogy and self.z == self.ogz then
+		if self.x == FUEL_HOME[1] and self.y == FUEL_HOME[2] and self.z == FUEL_HOME[3] then--if self.x == self.ogx and self.y == self.ogy and self.z == self.ogz then
 			print("i am hooome i suck coal from below")
 			turtle.suckDown()
 			self:refuel()
