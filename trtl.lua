@@ -3,7 +3,7 @@ require("tools4fools")
 require("Message")
 
 DIRECTIONS = {'north','east','south','west'}
-VALUABLES = {"ore","diamond","iron","lapis","redstone","emerald","coal"}
+VALUABLES = {"ore","diamond","iron","lapis","redstone","emerald","coal","flint"}
 TORCH_INTERVAL = 8
 
 --Facing north
