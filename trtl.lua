@@ -307,11 +307,13 @@ function Trtl:dumpOres(item)
     for i = 1, 16 do
 	    data = turtle.getItemDetail(i)
 	    print(data.name)
-	    if string.find(data.name,"ore") ~= nil then
-	    	turtle.select(i)
-	        turtle.dropDown()
-	        os.sleep(0.05)
-	    end
+	    if data ~= nil then
+		    if self:valuableCheck() then
+		    	turtle.select(i)
+		        turtle.dropDown()
+		        os.sleep(0.05)
+		    end
+		end
     end
 end
 
