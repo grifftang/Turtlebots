@@ -1,3 +1,5 @@
+const = require("Constants")
+
 local DIRECTIONS = {"north", "east", "south", "west", ["north"] = 1, ["east"] = 2, ["south"] = 3, ["west"] = 4}
 local _direction = 1
 
@@ -194,4 +196,39 @@ end
  
 local function remainder(dividend, divisor)
   return dividend - floor(dividend/divisor+0.5)*divisor
+end
+
+function split(str)
+  local inputs={}
+  for s in string.gmatch(str, "([^"..";".."]+)") do
+    table.insert(inputs, s)
+  end
+  return inputs
+end
+
+function getMessageType(base)
+  messageType = ""
+  while messageType == "" do
+    id, msg = rednet.receive(base .. const.typeTypings())
+    if msg~="" then
+      messageType=msg
+    end
+    return messageType
+  end
+end
+
+function run(messageType,taskDelegator,adminTaskDelegator)
+  while true do
+    id, msg = rednet.receive(messageType)
+    if msg~="" then
+      msgTable = textutils.unserialize(msg)
+      taskDelegator(msgTable)
+    end
+
+    adminId, adminMsg = rednet.receive(const.typeAdmin() .. messageType)
+    if adminMsg ~= "" then
+      adminMsgTable = textutils.unserialize(adminMsg)
+      adminTaskDelegator(adminMsgTable)
+    end
+  end
 end
