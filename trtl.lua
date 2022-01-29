@@ -3,11 +3,19 @@ require("tools4fools")
 require("Message")
 
 DIRECTIONS = {'north','east','south','west'}
+VALUABLES = {"ore","diamond","iron","lapis","redstone","emerald","coal","flint"}
 TORCH_INTERVAL = 8
-TORCH_HOME = {1,0,0}
-FUEL_HOME = {0,0,0}
+
+--Facing north
+-- TORCH_HOME = {2,0,0}
+-- FUEL_HOME = {0,0,0}
+-- ORE_HOME = {4,0,0}
+-- TRASH_HOME = {6,0,0}
+--FACING THE OTHER WAY
+TORCH_HOME = {4,0,0}
+FUEL_HOME = {6,0,0}
 ORE_HOME = {2,0,0}
-TRASH_HOME = {3,0,0}
+TRASH_HOME = {0,0,0}
 
 Trtl = {id = os.getComputerID(),
 		x = 0,
@@ -228,6 +236,7 @@ function Trtl:moveToPoint(targx,targy,targz)
 	end
 
 	self:moveToPoint(targx,targy,targz)
+	self:checkIfTorchNeeded()
 	 
 end
 
@@ -238,22 +247,23 @@ function Trtl:goToFuel()
 	self.refuel()
 end
 
-function Trtl:getBackToWork(x,y,z)
+function Trtl:getBackToWork(x,y,z,direction)
 	self:moveToPoint(x,y,z)
+	self:turnToDirection(DIRECTIONS[direction])
 end
 
 function Trtl:refuel()
 	i = getItemSlot("minecraft:coal")
 	if i == false then --if search for coal comes up false
-		if self.x == 0 and self.y == 0 and self.z == 0 then--if self.x == self.ogx and self.y == self.ogy and self.z == self.ogz then
+		if self.x == FUEL_HOME[1] and self.y == FUEL_HOME[2] and self.z == FUEL_HOME[3] then--if self.x == self.ogx and self.y == self.ogy and self.z == self.ogz then
 			print("i am hooome i suck coal from below")
 			turtle.suckDown()
 			self:refuel()
 		else
 			print("baus i have no coal i must go home now")
-			local ogX,ogY,ogZ = self.x,self.y,self.z
+			local ogX,ogY,ogZ,ogD = self.x,self.y,self.z,self.direction
 			self:goToFuel()
-			self:getBackToWork(ogX,ogY,ogZ)
+			self:getBackToWork(ogX,ogY,ogZ,ogD)
 		end
 		
 	else
@@ -288,9 +298,9 @@ function Trtl:checkInventoryFull()
     end
   end
   --if it isnt full
-  local x,y,z = self.x,self.y,self.z
+  local x,y,z,d = self.x,self.y,self.z, self.direction
   self:dropRocks()
-  self:getBackToWork(x,y,z)
+  self:getBackToWork(x,y,z,d)
 end
 
 function Trtl:dropRocks()
@@ -308,7 +318,7 @@ function Trtl:dumpOres(item)
 	    data = turtle.getItemDetail(i)
 	    print(data.name)
 	    if data ~= nil then
-		    if self:valuableCheck() then
+		    if self:valuableCheck(data.name) then
 		    	turtle.select(i)
 		        turtle.dropDown()
 		        os.sleep(0.05)
@@ -352,9 +362,9 @@ function Trtl:layTorch()
 	i = getItemSlot("minecraft:torch")
 	if i == false then
 		print("me no havo torcho")
-		local x,y,z = self.x,self.y,self.z
+		local x,y,z,d = self.x,self.y,self.z,self.direction
 		self:goToTorches()
-		self:getBackToWork(x,y,z)
+		self:getBackToWork(x,y,z,d)
 	else
 		print("me havo torcho!!!")
 		turtle.select(i)
